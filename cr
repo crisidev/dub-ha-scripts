@@ -5,7 +5,7 @@ echo
 echo "<html> <head> <title> $REMOTE_ADDR </title> </head> <body> <center>"
 echo
 
-echo "<h3><b>WELCOME $REMOTE_ADDR</b></h3>"
+echo "<h3><b>WELCOME $REMOTE_ADDR</b></h3>" 
 
 argument=`echo "$QUERY_STRING" | sed "s|mode=||"`
 
@@ -20,8 +20,8 @@ echo '<input type="submit" value="Submit">'
 echo '</form>'
 
 if [ "$argument" = "4g" ] || [ "$argument" = "vpn" ]; then
-        /etc/change_route.sh $REMOTE_ADDR $argument
-        echo "<h3>$REMOTE_ADDR routed through $argument - OK</h3>"
+	/etc/change_route.sh $REMOTE_ADDR $argument
+	echo "<h3>$REMOTE_ADDR routed through $argument - OK</h3>"
 fi
 
 echo '</center> </body> </html>'
