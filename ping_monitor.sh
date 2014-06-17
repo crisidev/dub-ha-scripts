@@ -32,12 +32,10 @@ for myHost in $HOSTS; do
 	count=$(($count + $local_count))
 done
 
-
 if [ $count -eq 0 ]; then
 	log "ERROR - ping to all host failed"
 	log "INFO  - rebooting 4g router"
-    	curl -u admin:`echo $ROUTER_PASS` "http://192.168.1.254/uir/rebo.htm" > /dev/null
-    	curl -u admin:`echo $ROUTER_PASS` "http://192.168.1.254/uir/rebo.htm" > /dev/null
+    	curl -u admin:$ROUTER_PASS http://192.168.1.254/stats.xml\?N801E0700=3 > /dev/null 2>&1
     	log "INFO  - 4g router rebooted"
 	exit 2
 fi
